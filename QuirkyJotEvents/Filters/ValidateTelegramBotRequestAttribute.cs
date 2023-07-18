@@ -45,10 +45,7 @@ public sealed class ValidateTelegramBotAttribute : TypeFilterAttribute
         {
             var isSecretTokenProvided = request.Headers.TryGetValue("X-Telegram-Bot-Api-Secret-Token", out var secretTokenHeader);
             
-            Console.WriteLine(1241241224);
-            if (!isSecretTokenProvided) return false;
-            Console.WriteLine(1241241224);
-            return string.Equals(secretTokenHeader, _secretToken, StringComparison.Ordinal);
+            return isSecretTokenProvided && string.Equals(secretTokenHeader, _secretToken, StringComparison.Ordinal);
         }
     }
 }
